@@ -1,0 +1,106 @@
+name: Envío [ESPAÑOL]
+description: Envía información de clonación para un artículo
+title: "PMID:XXXXXX"
+labels: [error, necesita-triage]
+body:
+  - type: markdown
+    attributes:
+      value: "## Detalles del Remitente (opcional)"
+
+  - type: input
+    id: full-name
+    attributes:
+      label: "Nombre Completo"
+      description: "Introduce tu nombre completo (opcional)."
+      placeholder: "Nombre Completo"
+    validations:
+      required: false
+
+  - type: input
+    id: orcid
+    attributes:
+      label: "ORCID"
+      description: "Introduce tu ORCID si tienes uno (opcional)."
+      placeholder: "ORCID:XXXX-XXXX-XXXX-XXXX"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "## Detalles de la Publicación"
+
+  - type: input
+    id: pmid
+    attributes:
+      label: "PMID"
+      description: "Introduce el PMID del artículo."
+      placeholder: "PMID:XXXXXX"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "Título"
+      description: "Introduce el título del artículo."
+      placeholder: "Título del artículo"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "## Detalles de Clonación"
+
+  - type: dropdown
+    id: cloning_detail_level
+    attributes:
+      label: "Nivel de Detalle de Clonación"
+      description: "Selecciona el nivel de detalle de la información de clonación."
+      options:
+        - Información de clonación ausente
+        - Información de clonación presente, pero insuficiente para reproducir
+        - Información de clonación presente y suficiente para reproducir
+    validations:
+      required: true
+
+  - type: textarea
+    id: cloning_text
+    attributes:
+      label: "Texto de Clonación (si está disponible)"
+      description: "Copia y pega las secciones del artículo que describen la clonación. Incluye todos los archivos arrastrándolos en el cuadro de texto (listas de cebadores, archivos de secuencia, etc.)."
+      placeholder: "mCherry fue amplificado desde el plásmido xyz usando los cebadores abc y def, luego [...]"
+    validations:
+      required: false
+
+  - type: textarea
+    id: cloning_strategies
+    attributes:
+      label: "Estrategias de Clonación"
+      description: "Arrastra y suelta todos los archivos JSON con estrategias de clonación (cualquier información extraída del artículo, como secuencias iniciales, cebadores, etc.)."
+      placeholder: "Suelta tus archivos aquí"
+    validations:
+      required: false
+
+  - type: textarea
+    id: missing_information
+    attributes:
+      label: "Información faltante (si hay)"
+      description: "Describe la información o secuencias que habrían sido necesarias para reproducir la clonación, pero que faltaban."
+      placeholder: "La secuencia de los plásmidos xyz no fue proporcionada y no pudimos encontrarla en línea, los cebadores utilizados para la ensamblaje Gibson no fueron proporcionados, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: present_information
+    attributes:
+      label: "Información presente (si hay)"
+      description: "Si no lograste reproducir la clonación, describe qué información encontraste en el artículo, incluso si no es suficiente para reproducir la clonación."
+      placeholder: "La secuencia de los plásmidos xyz fue proporcionada en el material suplementario, los cebadores utilizados para la ensamblaje Gibson fueron proporcionados en el material suplementario, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Notas"
+      description: "Cualquier nota o comentario adicional."
