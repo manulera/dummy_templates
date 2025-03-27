@@ -1,0 +1,69 @@
+name: Bug Report
+description: Report a bug in the project
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: "## Describe the Bug\nPlease provide a clear and concise description of the problem."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "What happened?"
+      description: "Provide a detailed explanation of the bug."
+      placeholder: "Describe the issue..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "Steps to Reproduce"
+      description: "List the steps to reproduce the issue."
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: input
+    id: expected-behavior
+    attributes:
+      label: "Expected Behavior"
+      description: "What should have happened?"
+      placeholder: "Describe the expected behavior"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: "Which browser are you using?"
+      description: "Select the browser where you observed the issue."
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+
+  - type: checkboxes
+    id: operating-system
+    attributes:
+      label: "Which operating system are you using?"
+      description: "Select all that apply."
+      options:
+        - label: Windows
+        - label: macOS
+        - label: Linux
+        - label: Other
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Additional Information"
+      description: "Any other details you'd like to add?"
+      placeholder: "Provide any extra information here."
