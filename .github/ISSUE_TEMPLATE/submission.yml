@@ -1,69 +1,103 @@
-name: Bug Report
-description: Report a bug in the project
-title: "[Bug]: "
+name: Submission
+description: Submit cloning information for a paper
+title: "PMID:XXXXXX"
 labels: [bug, needs-triage]
 body:
   - type: markdown
     attributes:
-      value: "## Describe the Bug\nPlease provide a clear and concise description of the problem."
+      value: "## Submitter Details (optional)"
 
-  - type: textarea
-    id: description
+  - type: input
+    id: full-name
     attributes:
-      label: "What happened?"
-      description: "Provide a detailed explanation of the bug."
-      placeholder: "Describe the issue..."
+      label: "Full Name"
+      description: "Enter your full name (optional)."
+      placeholder: "Full Name"
     validations:
-      required: true
+      required: false
 
-  - type: textarea
-    id: steps-to-reproduce
+  - type: input
+    id: orcid
     attributes:
-      label: "Steps to Reproduce"
-      description: "List the steps to reproduce the issue."
-      placeholder: |
-        1. Go to '...'
-        2. Click on '...'
-        3. Scroll down to '...'
-        4. See error
+      label: "ORCID"
+      description: "Enter your ORCID if you have one (optional)."
+      placeholder: "ORCID:XXXX-XXXX-XXXX-XXXX"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "## Publication Details"
+
+  - type: input
+    id: pmid
+    attributes:
+      label: "PMID"
+      description: "Enter the PMID of the paper."
+      placeholder: "PMID:XXXXXX"
     validations:
       required: true
 
   - type: input
-    id: expected-behavior
+    id: title
     attributes:
-      label: "Expected Behavior"
-      description: "What should have happened?"
-      placeholder: "Describe the expected behavior"
+      label: "Title"
+      description: "Enter the title of the paper."
+      placeholder: "Title of the paper"
     validations:
       required: true
 
-  - type: dropdown
-    id: browser
+  - type: markdown
     attributes:
-      label: "Which browser are you using?"
-      description: "Select the browser where you observed the issue."
-      options:
-        - Chrome
-        - Firefox
-        - Safari
-        - Edge
-        - Other
+      value: "## Cloning Details"
 
-  - type: checkboxes
-    id: operating-system
+  - type: dropdown
+    id: cloning_detail_level
     attributes:
-      label: "Which operating system are you using?"
-      description: "Select all that apply."
+      label: "Cloning Detail Level"
+      description: "Select the level of detail of the cloning information."
       options:
-        - label: Windows
-        - label: macOS
-        - label: Linux
-        - label: Other
+        - Cloning information missing
+        - Cloning information present, but not sufficient to reproduce
+        - Cloning information present and sufficient to reproduce
 
   - type: textarea
-    id: additional-info
+    id: cloning_text
     attributes:
-      label: "Additional Information"
-      description: "Any other details you'd like to add?"
-      placeholder: "Provide any extra information here."
+      label: "Cloning Text (if available)"
+      description: "Copy and paste the sections of the paper that describe cloning. Include all files by dropping them in the text box (primer lists, sequence files, etc.)"
+      placeholder: "mCherry was amplified from plasmid xyz using primers abc and def, then [...]"
+    validations:
+      required: false
+
+  - type: textarea
+    id: cloning_strategies
+    attributes:
+      label: "Cloning Strategies"
+      description: "Drag and drop all json files with cloning strategies (whatever you managed to extract from the paper, it can be simply the starting sequences, primers, etc.)."
+    validations:
+      required: false
+
+  - type: textarea
+    id: missing_information
+    attributes:
+      label: "Missing information (if any)"
+      description: "Describe the information or sequences that would have been needed to reproduce the cloning, but are missing."
+      placeholder: "The sequence of plasmids xyz was not provided and we could not find it online, the primers used for gibson assembly were not provided, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: present_information
+    attributes:
+      label: "Present information (if any)"
+      description: "If you did not manage to reproduce the cloning, describe what information you could find in the paper, even if it is not sufficient to reproduce the cloning."
+      placeholder: "The sequence of plasmids xyz was provided in the supplementary material, the primers used for gibson assembly were provided in the supplementary material, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Notes"
+      description: "Any additional notes or comments."
